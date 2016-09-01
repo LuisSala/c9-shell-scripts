@@ -18,7 +18,7 @@ git clone https://github.com/LuisSala/c9-shell-scripts ./tools
 ```
 $ aws configure
 AWS Access Key ID [None]: AKISAMPLEACCESSKEY
-AWS Secret Access Key [None]: jt00m@any$3cret$Ev
+AWS Secret Access Key [None]: CHANGEME/t00m@any$3cret$E
 Default region name [None]: us-east-1
 Default output format [None]: json
 ```
