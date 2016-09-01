@@ -1,0 +1,6 @@
+#! /bin/bash
+source ./config
+
+echo "Pushing Box Web App Code to S3: $BUCKET"
+echo "This will overwrite the web app with a version that includes the Box upload lab."
+aws s3 sync ./Box/S3 s3://$BUCKET/S3

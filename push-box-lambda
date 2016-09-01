@@ -1,0 +1,24 @@
+#! /bin/bash
+source ./config
+
+echo "Building uploadFile..."
+cd Box/Lambda/uploadFile
+echo "Updating Node Packages..."
+npm install > /dev/null
+echo "Compressing Archive..."
+zip -rq ../uploadFile.zip *
+cd ..
+echo "Uploading to S3: $BUCKET"
+aws s3 cp ./uploadFile.zip s3://$BUCKET
+echo "Build of uploadFile function complete!"
+
+echo "Building sharedLink..."
+cd sharedLink
+echo "Updating Node Packages..."
+npm install > /dev/null
+echo "Compressing Archive..."
+zip -rq ../sharedLink.zip *
+cd ..
+echo "Uploading to S3: $BUCKET"
+aws s3 cp ./sharedLink.zip s3://$BUCKET
+echo "Build of sharedLink function complete!"

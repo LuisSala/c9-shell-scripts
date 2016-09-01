@@ -1,0 +1,24 @@
+#! /bin/bash
+source ./config
+
+echo "Building uploadFile..."
+cd Box/Lambda/uploadFile
+echo "Updating Node Packages..."
+npm install > /dev/null
+echo "Compressing Archive..."
+zip -rq ../uploadFile.zip *
+cd ..
+echo "Uploading to Lambda"
+aws lambda update-function-code --function-name uploadFile --zip-file fileb://./uploadFile.zip
+echo "Build of uploadFile function complete!"
+
+echo "Building sharedLink..."
+cd sharedLink
+echo "Updating Node Packages..."
+npm install > /dev/null
+echo "Compressing Archive..."
+zip -rq ../sharedLink.zip *
+cd ..
+echo "Uploading to Lambda"
+aws lambda update-function-code --function-name sharedLink --zip-file fileb://./sharedLink.zip
+echo "Build of sharedLink function complete!"
