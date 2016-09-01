@@ -1,4 +1,5 @@
 #! /bin/bash
-source ./config
+source ./tools/config
+
 echo "Pushing Web App Code to S3: $BUCKET"
 aws s3 sync ./S3WebApp/S3 s3://$BUCKET/S3

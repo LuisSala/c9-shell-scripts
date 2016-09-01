@@ -1,15 +1,15 @@
 #! /bin/bash
-source ./config
+source ./tools/config
 
 echo "Building uploadFile..."
-cd Box/Lambda/uploadFile
+cd Box/uploadFile
 echo "Updating Node Packages..."
 npm install > /dev/null
 echo "Compressing Archive..."
 zip -rq ../uploadFile.zip *
 cd ..
-echo "Uploading to S3: $BUCKET"
-aws s3 cp ./uploadFile.zip s3://$BUCKET
+echo "Uploading to Lambda"
+aws lambda update-function-code --function-name uploadFile --zip-file fileb://./uploadFile.zip
 echo "Build of uploadFile function complete!"
 
 echo "Building sharedLink..."
@@ -19,6 +19,6 @@ npm install > /dev/null
 echo "Compressing Archive..."
 zip -rq ../sharedLink.zip *
 cd ..
-echo "Uploading to S3: $BUCKET"
-aws s3 cp ./sharedLink.zip s3://$BUCKET
+echo "Uploading to Lambda"
+aws lambda update-function-code --function-name sharedLink --zip-file fileb://./sharedLink.zip
 echo "Build of sharedLink function complete!"
