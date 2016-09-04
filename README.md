@@ -1,18 +1,13 @@
-1. Create a Cloud9 account:
+1. Create anm AWS account if you don't already have one. Make sure you copy your AWS ACCESS KEY and SECRET ACCESS KEY. You'll need this later.
+
+2. Create a Cloud9 account:
 https://c9.io
 
-2. Launch an empty Workspace
+3. Visit the "awshackers" team workspace: https://c9.io/awshackers
 
-3. Clone Zombie Repo
-git clone https://github.com/LuisSala/aws-lambda-zombie-workshop .
+4. Clone the "awshackers/hackathon" workspace. Ensure you uniquely name the workspace.
 
-4. Clone the Tools Repo
-git clone https://github.com/LuisSala/c9-shell-scripts ./tools
-
-
-5. Install AWS CLI
-
-` sudo pip install awscli
+5. Open your newly-cloned workspace.
 
 6. Configure CLI with **aws configure**
 ```
@@ -23,13 +18,18 @@ Default region name [None]: us-east-1
 Default output format [None]: json
 ```
 
-7. Launch Stack from github repo
+7. ![Click Here](https://console.aws.amazon.com/cloudformation/home?region=us-east-1#/stacks/new?stackName=zombiestack&templateURL=https://s3.amazonaws.com/aws-zombie-workshop-us-east-1/CreateZombieWorkshop.json) to launch your stack:
+8. 
 
 8. Begin to follow intros. At "Setup..." step 19:
-`$ tools/pull-site
+```
+$ tools/pull-site
+```
 
 9. Make the necessary changes to constants.js
-`$ tools/push-site
+```
+$ tools/push-site
+```
 
 10. Generating keys
 ```bash

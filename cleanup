@@ -1,0 +1,6 @@
+#! /bin/bash
+
+rm ~/.aws
+export BUCKET=""
+export STACKNAME="zombiestack"
+git checkout -- ~/workspace/

@@ -1,24 +1,36 @@
 #! /bin/bash
-source ./tools/config
 
-echo "Building uploadFile..."
-cd Box/uploadFile
-echo "Updating Node Packages..."
-npm install > /dev/null
-echo "Compressing Archive..."
-zip -rq ../uploadFile.zip *
-cd ..
-echo "Uploading to Lambda"
-aws lambda update-function-code --function-name uploadFile --zip-file fileb://./uploadFile.zip
-echo "Build of uploadFile function complete!"
 
-echo "Building sharedLink..."
-cd sharedLink
-echo "Updating Node Packages..."
-npm install > /dev/null
-echo "Compressing Archive..."
-zip -rq ../sharedLink.zip *
-cd ..
-echo "Uploading to Lambda"
-aws lambda update-function-code --function-name sharedLink --zip-file fileb://./sharedLink.zip
-echo "Build of sharedLink function complete!"
+if [ -z "$STACKNAME" ]; then
+    echo "ERROR: Stack name not configured!"
+    echo "Please set the \$STACKNAME environment variable."
+    echo "Example:"
+    echo "\$ export BUCKET=zombiestack"
+    
+else
+    echo "Preparing to push Lambda code to the stack labeled: $STACKNAME"
+    cd ~/workspace
+    
+    echo "Building uploadFile..."
+    cd Box/uploadFile
+    echo "Updating Node Packages..."
+    npm install > /dev/null
+    echo "Compressing Archive..."
+    zip -rq ../uploadFile.zip *
+    cd ..
+    echo "Uploading to Lambda"
+    aws lambda update-function-code --function-name $STACKNAME-uploadFile --zip-file fileb://./uploadFile.zip
+    echo "Deployment of uploadFile function complete!"
+    echo ""
+    echo ""
+    echo "Building sharedLink..."
+    cd sharedLink
+    echo "Updating Node Packages..."
+    npm install > /dev/null
+    echo "Compressing Archive..."
+    zip -rq ../sharedLink.zip *
+    cd ..
+    echo "Uploading to Lambda"
+    aws lambda update-function-code --function-name $STACKNAME-sharedLink --zip-file fileb://./sharedLink.zip
+    echo "Deployment of sharedLink function complete!"
+fi

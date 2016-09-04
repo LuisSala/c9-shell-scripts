@@ -7,6 +7,6 @@ if [ -z "$BUCKET" ]; then
     echo "\$ export BUCKET=YourAWSBucketName"
     
 else
-    echo "Pushing Web App Code to S3: $BUCKET"
-    aws s3 sync ~/workspace/S3WebApp/S3 s3://$BUCKET/S3
+    echo "Updating from S3: $BUCKET"
+    aws s3 sync s3://$BUCKET/S3/assets/js/ ~/workspace/S3WebApp/S3/assets/js/
 fi

@@ -1,5 +1,0 @@
-#! /bin/bashsh
-source ./tools/config
-
-echo "Updating from S3: $BUCKET"
-aws s3 sync s3://$BUCKET/S3 ./S3WebApp/S3
