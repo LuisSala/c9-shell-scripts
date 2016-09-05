@@ -1,6 +1,7 @@
 #! /bin/bash
 
-rm ~/.aws
+rm -rf ~/.aws
 export BUCKET=""
 export STACKNAME="zombiestack"
 git checkout -- ~/workspace/
+history -c

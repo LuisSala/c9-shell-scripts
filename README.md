@@ -19,16 +19,16 @@ Default output format [None]: json
 ```
 
 7. ![Click Here](https://console.aws.amazon.com/cloudformation/home?region=us-east-1#/stacks/new?stackName=zombiestack&templateURL=https://s3.amazonaws.com/aws-zombie-workshop-us-east-1/CreateZombieWorkshop.json) to launch your stack:
-8. 
+ 
 
 8. Begin to follow intros. At "Setup..." step 19:
 ```
-$ tools/pull-site
+$ pull-constants
 ```
 
 9. Make the necessary changes to constants.js
 ```
-$ tools/push-site
+$ push-site
 ```
 
 10. Generating keys
