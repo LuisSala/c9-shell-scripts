@@ -5,7 +5,7 @@ if [ -z "$STACKNAME" ]; then
     echo "ERROR: Stack name not configured!"
     echo "Please set the \$STACKNAME environment variable."
     echo "Example:"
-    echo "\$ export BUCKET=zombiestack"
+    echo "\$ export STACKNAME=zombiestack"
     
 else
     echo "Preparing to push Lambda code to the stack labeled: $STACKNAME"
